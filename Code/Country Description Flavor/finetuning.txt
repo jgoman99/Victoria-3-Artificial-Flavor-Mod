@@ -1,0 +1,7 @@
+open console
+0. Make sure API KEY is set 
+e.g. set OPENAI_API_KEY=zefusdfdfdsf
+1. reformat data
+openai tools fine_tunes.prepare_data -f "C:\Users\Seldon\Desktop\Victoria 3 Artificial Flavor Mod\Code\Country Description Flavor\countries_desc_train.jsonl"
+2. fine tune with model
+openai api fine_tunes.create -t "C:\Users\Seldon\Desktop\Victoria 3 Artificial Flavor Mod\Code\Country Description Flavor\countries_desc_train_2_prepared.jsonl" -m "davinci"

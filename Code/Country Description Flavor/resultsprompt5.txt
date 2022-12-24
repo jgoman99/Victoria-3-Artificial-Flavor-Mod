@@ -1,0 +1,6 @@
+['.',
+ 'Tunis: Tunisia has been a major trading hub for centuries, but the 19th century has seen a new wave of European influence. With the French and British vying for control, will Tunisia be able to maintain its independence?',
+ 'South Australia: South Australia is a new British colony, but the indigenous people are determined to protect their land and culture. How will the two sides reconcile their differences and coexist in the new era?',
+ "Portugal: Portugal is in the midst of a period of political and economic upheaval. With the country's economy in shambles, will the Portuguese people be able to find a way to rebuild their nation?",
+ 'Parma: Parma is a small Italian state, but its people are determined to make their mark on the world. With the rise of the Italian unification movement, will Parma be able to join the new Italy?',
+ 'Denmark: Denmark is a small nation with a long history of independence. But with the rise of the German Empire, will Denmark be able to maintain its autonomy in the face of a powerful neighbor?']
