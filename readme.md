@@ -2,8 +2,11 @@
 
 This is a project to add flavor to Victoria 3 using OpenAI.
 
-## Country Description Flavor
+## Code Structure:
+code that does stuff
+examples - have the form (example.py)
 
+## Country Description Flavor
 For the english localization:
 Country tags:
 
@@ -35,4 +38,7 @@ residing there. For more well-known countries, the results are at paradox level 
 2. reword things
 3. write scribble with approach used
 4. upload to steam workshop
-5. figure out other mods to make
+5. figure out other mods to make - maybe dynamic country names? - dynamic names shouldn't be too hard, look at examples of their dynamism to properly go about it,
+real question is can I also get the code for the triggers at the same time?
+6. May write a read paradox yaml script
+7. todo: add option to add true localization e.g. make pirate show up
