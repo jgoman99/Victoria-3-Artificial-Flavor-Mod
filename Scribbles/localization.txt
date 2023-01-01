@@ -1,0 +1,7 @@
+ok: full loc is hard.
+
+clausewitz/
+localization/
+languages.yml
+*
+text_utils/

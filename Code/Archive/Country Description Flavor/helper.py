@@ -62,3 +62,43 @@ def convert_countries_flavor_df_to_countries_flavor_yml(countries_df,new_countri
          
     with open(new_countries_flavor_text_path,"w",encoding='utf-8') as f:
         f.writelines(L)
+        
+        
+# improved option to read paradox yml files
+# some issues with reading may remain
+def read_yml(path):
+    with open(path, 'r', encoding ='utf-8') as f:
+        lines = f.read()
+        
+    lines = lines.split("\n")
+    # skips header
+    header = lines[0]
+    lines = lines[1:]
+    # trim white space
+    lines = [line.strip() for line in lines]
+    # remove empty lines
+    lines = [line for line in lines if line !=""]
+    # remove comments lines
+    lines = [line for line in lines if line[0] != '#']
+    # text 
+    lines = [re.split('(?=")',line) for line in lines]
+    # this seems janky, may be issues here, will need to bug test
+    lines = [[line[0].split(":")[0], line[0].split(":")[1].strip(),line[1]] for line in lines]
+
+    # remove quotes from text
+    lines = [[line[0], line[1], line[2].replace('"','')] for line in lines]
+    # convert to dataframe
+    
+    df = pd.DataFrame(lines,columns = ["var","num","text"])
+    return(df,header)
+
+def write_yml(df,header,path):
+    L = []
+    L.append(header)
+    L.append("\n")
+    for idx,row in df.iterrows():
+         line = " " + str(row['var']) + ":" + str(row['num']) + ' "' + str(row['text']) + '"\n'
+         L.append(line)
+         
+    with open(path,"w",encoding='utf-8') as f:
+        f.writelines(L)

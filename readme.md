@@ -34,11 +34,25 @@ residing there. For more well-known countries, the results are at paradox level 
 
 
 ### Todo:
-1. Refactor code, add disclaimer to ai part?
-2. reword things
-3. write scribble with approach used
-4. upload to steam workshop
+6. May write a read paradox yaml script
 5. figure out other mods to make - maybe dynamic country names? - dynamic names shouldn't be too hard, look at examples of their dynamism to properly go about it,
 real question is can I also get the code for the triggers at the same time?
-6. May write a read paradox yaml script
+
 7. todo: add option to add true localization e.g. make pirate show up
+
+8. OK THIS IS AWESOME. We can mess edit localization files, by asking chat GPT to return same file but with some modification.
+Write a script to do mass edits!
+
+basically, we have to teach chatgpt paradox's yaml, then tell it to modify stuff inside quotes
+use basic english and learning english
+have to be careful with & and $ and stuff
+
+make localization that iteratively goes through?
+maybe estimate tokens before going through?
+
+I think all we need is very good yaml reader, then we extract the "" that isn't dynamic, and parse it. I recommend just ignoring ANY Dynamic text e.g. anything that isnt alphanumeric
+fine tune model for basic english - to save money, since each text we will be sending is quite small
+and run!
+
+NOTE: I think we may be able to use a different model. Davinci is expensive for this, and another tool may do the job cheaper and jsut as good
+I recommend trying each model individually
