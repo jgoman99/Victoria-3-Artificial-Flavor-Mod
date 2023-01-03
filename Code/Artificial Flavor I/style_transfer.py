@@ -16,11 +16,11 @@ from ai_constants import pricing_dict
 import re
 
 #file_paths_to_translate = ['C:\\Program Files (x86)\\Steam\\steamapps\\common\\Victoria 3\\game\\localization\\english\\content_104_l_english.yml']
-file_paths_to_translate = ['C:\\Program Files (x86)\\Steam\\steamapps\\common\\Victoria 3\\game\\localization\\english\\inventions_l_english.yml']
+file_paths_to_translate = ['C:\\Program Files (x86)\\Steam\\steamapps\\common\\Victoria 3\\game\\localization\\english\\alerts_l_english.yml']
 
-prompt = 'convert to pirate speech'
+prompt = 'rewrite in pirate speech. Do not change words with special characters'
 mod_directory = "../"
-temperature = .8
+temperature = .3
 # add option to screen out special
 # add generate option
 # with davinci looks like it handles dynamic stuff well e.g $$, []
@@ -70,7 +70,7 @@ def translate_localization(prompt,file_paths_to_translate,mod_directory,temperat
         txt = "Using model: " + str(key) + " would cost around ${cost:.2f}"
         print(txt.format(cost=cost))
         
-    input_model = input(prompt = 'use model: ')
+    input_model = input(prompt = 'Davinci is highly recommended. Use model: ')
     # create original text column
     combined_df['orig_text'] = combined_df['text']
     # set text to nan
@@ -84,8 +84,9 @@ def translate_localization(prompt,file_paths_to_translate,mod_directory,temperat
             response = get_openai_response_optimized_for_style_transfer(prompt_text,input_model,temperature)
             combined_df.loc[idx,'text'] = response['choices'][0]['text'].replace('\n','')
             
-        for num, item in enumerate(combined_df['text'].iloc[0:3]):
-            print(str(num) + ". " + item)
+        for idx, row in combined_df.iloc[0:3].iterrows():
+            print('original: ' + str(row['orig_text']))
+            print('AI generated: ' + str(row['text']))
             
         deny_bool = True
         while deny_bool:
@@ -98,16 +99,29 @@ def translate_localization(prompt,file_paths_to_translate,mod_directory,temperat
                 deny_bool = False
                 
     # run on everything else
-    # may need to add a try, try again here, due to server issues
+    # try added due to server issues
     count = 0
-    for idx,row in combined_df[combined_df.text.isna()].iterrows():
-        sleep(1.5)
-        count += 1
-        if count % 20 == 0:
-            print('Processing: ' + str(count/combined_df.shape[0]))
-        prompt_text = generate_prompt_for_style_transfer(prompt, row['orig_text'])
-        response = get_openai_response_optimized_for_style_transfer(prompt_text,input_model,temperature)
-        combined_df.loc[idx,'text'] = response['choices'][0]['text'].replace('\n','')
+    for i in range(100):
+      for attempt in range(100):
+        try:
+            for idx,row in combined_df[combined_df.text.isna()].iterrows():
+                sleep(1.5)
+                count += 1
+                if count % 20 == 0:
+                    print('Processing: ' + str(count/combined_df.shape[0]))
+                prompt_text = generate_prompt_for_style_transfer(prompt, row['orig_text'])
+                response = get_openai_response_optimized_for_style_transfer(prompt_text,input_model,temperature)
+                combined_df.loc[idx,'text'] = response['choices'][0]['text'].replace('\n','')
+                
+                print('original: ' + str(combined_df.loc[idx,'orig_text'] ))
+                print('AI generated: ' + str(combined_df.loc[idx,'text'] ))
+        except:
+            print("Suspected Server Overload. Retrying.")
+            sleep(5)
+        else:
+          break
+      else:
+        raise ValueError("Something went wrong. It may be server issues")
 
     # convert to yml, and create new folders
     mod_paths = [Path(item) for item in combined_df['file_path'].unique()]
