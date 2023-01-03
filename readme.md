@@ -9,26 +9,31 @@ Country Description Flavor:
 * Some country descriptions are really good! They include nuanced historical details from the time that would surprise an amateur historian.
 * Some country descriptions are hilariously wrong. These are generally the tags for which not much is known.
 * Some country descriptions may include events that happened after 1836.
+
 ![alt text](country_desc_kokand.png "Title")
 
 Pirate-Theme'd Inventions
 * Changes the text for inventions to pirate
 * Some descriptions have two words mashed together. This is due to the AI getting confused on small prompts
+
 ![alt text](inventions.png "Title")
 
 Basic English Interest Group Traits
 * Changes interest group traits to [basic english](https://en.wikipedia.org/wiki/Basic_English)
 * Some descriptions have two words mashed together. This is due to the AI getting confused on small prompts
+
 ![alt text](ig_traits.png "Title")
 
 Igpay Atinlay Eategicstay Egionsray
 * Changes the text for strategic regions to pig latin
+
 ![alt text](strategicregions.png "Title")
 
 Pirate-Theme'd Speech Alerts
 * Changes alerts to pirate speech
 * Example of how OpenAI can rewrite text with code in it, with a modified prompt. 'rewrite in pirate speech. Do not change words with special characters'
 * This was a very simple attempt to use OpenAI to write code. I will likely revisit this in the future when I have more time.
+
 ![alt text](alerts.png "Title")
 
 ## Make your own mod!
