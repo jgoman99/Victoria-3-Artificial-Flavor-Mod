@@ -1,0 +1,18 @@
+﻿l_english:
+ oscar_wilde_events.1.t:1 "
+
+'Tis a sad truth that each man kills the thing he loves, for in his mind a darkness lurks that leads him to his doom. He may not understand the depths of his own heart, but the truth of his actions will soon be revealed. His love is like a fragile flower, beautiful to behold yet easily destroyed by a single touch. If only he could see the truth of his own actions, he might be able to save the thing he loves, but alas, he is too late."
+ oscar_wilde_events.1.wilde:2 " Alas, what a tragedy it is when a great talent such as [SCOPE.sCharacter('oscar_wilde').GetFullName] is met with such a cruel fate!"
+ oscar_wilde_events.1.flavor_wilde:1 "Oscar Wilde's work stands as a testament to the nation's great tradition of satire and sharp wit. His works are renowned for their keen insight and wry humor, and have been treasured by generations of readers."
+ oscar_wilde_events.1.flavor_author:0 "Verily, it had the terrible beauty of a Greek tragedy, wherein I had a direful part to play."
+ oscar_wilde_events.1.flavor_quote:0 ""Verily, the books that the world deems immoral are those which reveal the world's own disgrace!""
+ oscar_wilde_tt:0 "Verily, 'Oscar Wilde' shall be liberated!"
+ oscar_wilde_events.1.a:0 "Verily, 'tis true that a genius is deserving of an exemption!"
+ oscar_wilde_events.1.b:0 "
+Verily, we cannot be seen to be undermining the verdicts of our judges, for it would be a grievous offense indeed."
+ oscar_wilde_events.1.c:0 "
+Verily, 'tis a most heinous crime that one should be punished for such a deed!"
+ happy_arts_protected:0 "'Verily, 'tis true that Artists be Protected! For 'tis they who bring us beauty, joy, and inspiration, and 'tis only right that they should be safeguarded from harm. All who value the Arts should be in agreement that these Creators be given the respect and security they deserve."
+ unhappy_defended_homosexuality:0 "He could not countenance the idea of homosexual tolerance, for it was an affront to his sense of morality. He felt that such an acceptance of the practice would be a stain upon the fabric of society, and he would not abide it. He was a man of strong convictions, and he could not in good conscience accept what he saw as a moral abomination."
+ imprisoning_gentlemen:0 " for DebtOh, the sorrow and despair of those poor gentlemen who are locked away in debtors' prisons! Such a fate is a heavy burden to bear, and yet many have been subjected to this cruel punishment. For years they have languished in the darkness, their spirits broken and their hopes of freedom all but extinguished. No matter how hard they strive, there is no escape from their confinement, and no reprieve from the suffering they endure. How heart-rending it is to think of these men, so full of potential, yet so cruelly denied their right to freedom and happiness!"
+ upheld_ruling:0 "The ruling was upheld with great finality, leaving no room for dispute or further discussion. All those present accepted the decision with solemnity, for it was clear that it was the only course of action to take. Thus, the ruling was accepted by all and the matter was closed."
