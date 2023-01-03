@@ -1,9 +1,9 @@
 {
-  "name" : "Victoria 3 Artificial Flavor Mod",
+  "name" : Country Description Flavor",
   "id" : "",
   "version" : "",
   "supported_game_version" : "",
-  "short_description" : "",
+  "short_description" : "Generates new country descriptions using OpenAI",
   "tags" : [],
   "relationships" : [],
   "game_custom_data" : {

@@ -5,13 +5,13 @@ Created on Sat Dec 31 16:41:43 2022
 @author: Seldon
 """
 
-import sys
+from time import sleep
 import os 
 import pandas as pd
 import numpy as np
 from pathlib import Path
 from itertools import chain
-from helper import read_yml, write_yml, generate_prompt_for_style_transfer, get_openai_response
+from helper import read_yml, write_yml, generate_prompt_for_style_transfer, get_openai_response_optimized_for_style_transfer
 from ai_constants import pricing_dict
 import re
 
@@ -81,8 +81,8 @@ def translate_localization(prompt,file_paths_to_translate,mod_directory,temperat
         print("Running Test Samples")
         for idx,row in combined_df.iloc[0:3].iterrows():
             prompt_text = generate_prompt_for_style_transfer(prompt, row['orig_text'])
-            response = get_openai_response(prompt_text,input_model,temperature)
-            combined_df.loc[idx,'text'] = response['choices'][0]['text']
+            response = get_openai_response_optimized_for_style_transfer(prompt_text,input_model,temperature)
+            combined_df.loc[idx,'text'] = response['choices'][0]['text'].replace('\n','')
             
         for num, item in enumerate(combined_df['text'].iloc[0:3]):
             print(str(num) + ". " + item)
@@ -98,15 +98,16 @@ def translate_localization(prompt,file_paths_to_translate,mod_directory,temperat
                 deny_bool = False
                 
     # run on everything else
+    # may need to add a try, try again here, due to server issues
     count = 0
-    for idx,row in combined_df.iloc[3:].iterrows():
+    for idx,row in combined_df[combined_df.text.isna()].iterrows():
+        sleep(1.5)
         count += 1
         if count % 20 == 0:
             print('Processing: ' + str(count/combined_df.shape[0]))
-            sys.sleep(60)
         prompt_text = generate_prompt_for_style_transfer(prompt, row['orig_text'])
-        response = get_openai_response(prompt_text,input_model,temperature)
-        combined_df.loc[idx,'text'] = response['choices'][0]['text'].replace('\n\n','')
+        response = get_openai_response_optimized_for_style_transfer(prompt_text,input_model,temperature)
+        combined_df.loc[idx,'text'] = response['choices'][0]['text'].replace('\n','')
 
     # convert to yml, and create new folders
     mod_paths = [Path(item) for item in combined_df['file_path'].unique()]

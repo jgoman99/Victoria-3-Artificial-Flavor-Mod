@@ -12,6 +12,10 @@ import openai
 from ai_constants import models_dict,tokens_dict
 
 
+# ADDENDUM TO COMMENT BELOW
+# API call packing to some degree may be necessary, as their server does not like frequent calls
+# so does increase speed, and them not kicking us out
+
 # TOP LEVEL COMMENT
 # Optimizing OPENAI prompt (e.g. making sure API call returns close to max tokens)
 # is not worth it. AI creativity declines quickly around the 10-20th response.
@@ -59,6 +63,21 @@ def estimate_words(text):
 def generate_prompt_for_style_transfer(prompt, string):
     prompt_text = prompt + ":\n" + string
     return(prompt_text)
+
+# TRANSLATE FIX
+def get_openai_response_optimized_for_style_transfer(prompt,model,temperature=.5):
+    prompt_tokens_est = int(len(prompt.split(' '))*(4/3)*1.25)
+    response = openai.Completion.create(
+      model=models_dict[model],
+      prompt=prompt,
+      # change this to change how sure AI is about it's response, 0 is most accurate, 1 is least
+      temperature=temperature,
+      # Controls max length of response. 
+      max_tokens=prompt_tokens_est*4
+      #stop = "\n"
+    
+    )
+    return(response)
 
 
 # this is primarily optimized for davinci
