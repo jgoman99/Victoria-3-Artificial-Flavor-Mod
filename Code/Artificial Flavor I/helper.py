@@ -59,6 +59,28 @@ def estimate_words(text):
         
 #     return(prompt_text)
 
+# edit test
+# Note: This should be free right now (1/3/23)
+# Note: OpenAI edit model has potential but is very limited as it currently exists.
+# it maybe can do spell check, and some insertions, but even slightly more complicated
+# prompts cause hilarious responses.
+def get_openai_edit_reponse(orig_text,instruction,temperature=.5):
+    
+    # this did not work
+    # adding period to hopefully fix edit endless spiral issue
+    # if orig_text[-1] != '.':
+    #     orig_text = str(orig_text) + '.'
+        
+    response = openai.Edit.create(
+      model='text-davinci-edit-001',
+      input=orig_text,
+      instruction = instruction,
+      # change this to change how sure AI is about it's response, 0 is most accurate, 1 is least
+      temperature=temperature
+    
+    )
+    return(response)
+
 # PROMPT GENERATION FIX
 def generate_prompt_for_style_transfer(prompt, string):
     prompt_text = prompt + ":\n" + string
